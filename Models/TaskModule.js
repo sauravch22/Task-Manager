@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const TaskSchema = mongoose.Schema({
     title : String,
+    body:String,
     completed : Boolean
 })
 

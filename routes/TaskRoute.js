@@ -12,7 +12,7 @@ router.get("/get/:id", getOnetask)
 
 router.post("/add", addTask)
 
-router.put("/update/:id", updateTask)
+router.patch("/update/:id", updateTask)
 
 router.delete("/delete/:id", deleteTask)
 
