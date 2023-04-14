@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const TaskUser = require("../Models/UserModule")
 const bcrypt = require('bcrypt')
+const gettoten = require("../utils/token")
 
 exports.createUser = asyncHandler(async(req,res) => {
     const {name,mail,password} = req.body
@@ -31,7 +32,7 @@ exports.login = asyncHandler( async(req,res) =>{
             res.json({ msg: "Incorrect Password", status: false });
         }
         else{
-            res.json({user:user, status : true})
+            res.json({user:user, status : true, token : await gettoten(user.id)})
         }
     }
 })
