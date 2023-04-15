@@ -4,7 +4,7 @@
 
 ## Tasks Api :- Basic CURD Operations :- Create Tasks, View Tasks (Viewers can only view tasks ), Create Tasks, Delete Tasks (Editors can update and delete           Tasks)
 
-## Updates Can be of Task status, Body and title.
+## Updates Can be of Task status, Body and title (Editors can only edit).
 
 ## Mail notification on addition of user as Editors and Viewers
     

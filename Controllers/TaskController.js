@@ -36,13 +36,26 @@ const addTask = asyncHandler(async(req,res)=>{
 })
 
 const updateTask = asyncHandler(async(req,res)=>{
-    const task = await Task.findOneAndUpdate({_id:req.params.id,Editor_id:{$in : [req.user.id]}},{completed : true})
-    if(!task){
-        res.json({message:"No Task to display"})
+    console.log(req.body)
+    if(req.body.type == "title"){
+        const task = await Task.findOneAndUpdate({_id:req.params.id,Editor_id:{$in : [req.user.id]}},{title : req.body.content})
+        if(!task){
+            return res.json({message:"No Task to Update"})
+        }
+    }
+    else if(req.body.type == "body"){
+        const task = await Task.findOneAndUpdate({_id:req.params.id,Editor_id:{$in : [req.user.id]}},{body : req.body.content})
+        if(!task){
+            return res.json({message:"No Task to Update"})
+        }
     }
     else{
-    res.json({message : `Updated task ${req.params.id}`})
+        const task = await Task.findOneAndUpdate({_id:req.params.id,Editor_id:{$in : [req.user.id]}},{completed : true})
+        if(!task){
+           return res.json({message:"No Task to Update"})
+        }
     }
+    return res.json({message : `Updated task ${req.params.id}`})
 })
 
 const deleteTask = asyncHandler(async(req,res) =>{
